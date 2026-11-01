@@ -1,0 +1,316 @@
+/* =====================================================================
+   Material Design 3 (M3) Modern Minimalist Checkboxes & Custom Inputs
+   ===================================================================== */
+.at-chk-btn, .m3-chk {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--ink) 82%, var(--mut));
+  cursor: pointer;
+  white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  background: color-mix(in srgb, var(--sub) 68%, var(--card));
+  padding: 5px 12px 5px 7px;
+  border-radius: 12px;
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.15s cubic-bezier(0.2, 0, 0, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.at-chk-btn:hover, .m3-chk:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 5%, var(--sub));
+  border-color: color-mix(in srgb, var(--ink) 20%, var(--line));
+}
+.at-chk-btn:active, .m3-chk:active {
+  transform: scale(0.985);
+}
+.at-chk-btn.on, .m3-chk.on {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--acc) 11%, var(--card));
+  border-color: color-mix(in srgb, var(--acc) 42%, var(--line));
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--acc) 10%, transparent);
+}
+.m3-chk-target {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.m3-chk-halo {
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  background: transparent;
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+              opacity 0.2s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+}
+.at-chk-btn:hover .m3-chk-halo,
+.m3-snap-item:hover .m3-chk-halo {
+  background: color-mix(in srgb, var(--acc) 12%, transparent);
+  transform: scale(1);
+  opacity: 1;
+}
+.at-chk-btn:focus-visible .m3-chk-halo,
+.m3-snap-item:focus-visible .m3-chk-halo {
+  background: color-mix(in srgb, var(--acc) 18%, transparent);
+  transform: scale(1.05);
+  opacity: 1;
+}
+.at-chk-btn:active .m3-chk-halo,
+.m3-snap-item:active .m3-chk-halo {
+  background: color-mix(in srgb, var(--acc) 22%, transparent);
+  transform: scale(1.08);
+  opacity: 1;
+}
+.at-chk-box {
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 2px solid color-mix(in srgb, var(--ink) 45%, var(--mut));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  flex: none;
+}
+.at-chk-btn:hover .at-chk-box,
+.m3-snap-item:hover .at-chk-box {
+  border-color: color-mix(in srgb, var(--acc) 70%, var(--ink));
+}
+.at-chk-btn.on .at-chk-box,
+.m3-snap-item.on .at-chk-box {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: #ffffff;
+  transform: scale(1.04);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--acc) 35%, transparent);
+}
+.at-chk-svg {
+  width: 12px;
+  height: 12px;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.22s cubic-bezier(0.2, 0, 0, 1);
+}
+.at-chk-btn.on .at-chk-svg,
+.m3-snap-item.on .at-chk-svg {
+  stroke-dashoffset: 0;
+}
+.at-chk-btn.wrap {
+  white-space: normal;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 100%;
+  width: 100%;
+  line-height: 1.38;
+  padding: 8px 12px 8px 8px;
+  box-sizing: border-box;
+}
+.at-chk-btn.wrap .m3-chk-target {
+  margin-top: -1px;
+}
+.at-chk-btn.wrap > .m3-chk-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  flex: 1 1 auto;
+}
+
+/* Material UI 3.0 Snap Scenario Checkbox Card */
+.m3-snap-item {
+  padding: 9px 11px 9px 8px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+  background: color-mix(in srgb, var(--sub) 65%, var(--card));
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  user-select: none;
+}
+.m3-snap-item:hover {
+  background: color-mix(in srgb, var(--ink) 4%, var(--sub));
+  border-color: color-mix(in srgb, var(--ink) 20%, var(--line));
+}
+.m3-snap-item.on {
+  border-color: color-mix(in srgb, var(--acc) 48%, var(--line));
+  background: color-mix(in srgb, var(--acc) 9%, var(--card));
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--acc) 10%, transparent);
+}
+
+/* Material UI 3.0 Custom Minimalist Inputs (M3HexInput & M3ColorInput) */
+.m3-color-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--sub) 65%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+  transition: border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+.m3-color-row:hover {
+  border-color: color-mix(in srgb, var(--ink) 22%, var(--line));
+}
+.m3-color-row.focus-within {
+  border-color: var(--acc);
+  background: var(--card);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 14%, transparent);
+}
+.m3-swatch-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 3px 7px 3px 4px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--line) 95%, transparent);
+  background: var(--card);
+  cursor: pointer;
+  flex: none;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+.m3-swatch-btn:hover {
+  border-color: var(--acc);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--acc) 18%, transparent);
+  transform: translateY(-0.5px);
+}
+.m3-swatch-btn.open {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 2.5px color-mix(in srgb, var(--acc) 22%, transparent);
+}
+.m3-swatch-orig {
+  width: 12px;
+  height: 22px;
+  border-radius: 5px 2px 2px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  flex: none;
+}
+.m3-swatch-cur {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  flex: none;
+}
+.m3-field {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 9px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--card) 92%, var(--sub));
+  border: 1.5px solid color-mix(in srgb, var(--line) 95%, transparent);
+  cursor: text;
+  transition: border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+.m3-field:hover {
+  border-color: color-mix(in srgb, var(--ink) 32%, var(--line));
+}
+.m3-field.focus {
+  border-color: var(--acc);
+  background: var(--card);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 15%, transparent);
+}
+.m3-field-lbl {
+  position: absolute;
+  top: -6.5px;
+  left: 8px;
+  padding: 0 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--mut);
+  pointer-events: none;
+  transition: color 0.18s ease;
+}
+.m3-field.focus .m3-field-lbl {
+  color: var(--acc);
+}
+.m3-field-hash {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--acc);
+  user-select: none;
+  flex: none;
+}
+.m3-field-ed {
+  flex: 1 1 auto;
+  min-width: 0;
+  outline: none;
+  border: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.m3-field-ed:empty::before {
+  content: attr(data-placeholder);
+  color: var(--mut);
+  opacity: 0.55;
+}
+.m3-icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+  background: var(--card);
+  color: var(--mut);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: none;
+  transition: all 0.18s cubic-bezier(0.2, 0, 0, 1);
+}
+.m3-icon-btn:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--acc) 45%, var(--line));
+  background: color-mix(in srgb, var(--acc) 10%, var(--card));
+}
+.m3-icon-btn.on {
+  color: #fff;
+  background: var(--acc);
+  border-color: var(--acc);
+}
